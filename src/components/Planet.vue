@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card-header" v-once>
-            Planet {{ msg }}
+            {{ name }}
         </div>
         <div class="card-body">
             <p class="card-text">
@@ -44,6 +44,6 @@ export default {
 .card-body
     text-align: start
     padding-left: 2.5rem
-    
+
 </style>
 

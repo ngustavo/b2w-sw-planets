@@ -1,7 +1,6 @@
 <template lang="pug">
-  Main
+    Main
 </template>
-
 
 <script>
 import Main from "./components/Main.vue"
@@ -13,6 +12,7 @@ export default {
     }
 }
 </script>
+
 <style lang="sass">
 html
     width: 100%

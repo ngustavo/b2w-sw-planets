@@ -19,10 +19,10 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data: () => ({
-        msg: "Name",
         name: "Planet Name",
         population: 999,
         climate: "Arid",
@@ -36,8 +36,14 @@ export default {
 .card
     margin: 2rem auto
     width: 18rem
+
+.card-header
+    font-weight: bold
+    font-size: 1.3rem
+
 .card-body
     text-align: start
     padding-left: 2.5rem
+    
 </style>
 

@@ -1,4 +1,6 @@
-# b2w-sw-planets
+# StarWars Planets
+
+Web app for checking info about a random Star Wars planet
 
 ## Project setup
 ```

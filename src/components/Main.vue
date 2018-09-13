@@ -1,8 +1,7 @@
 <template>
     <div class="container">
-        <div
-            class="icon"
-            v-if="spin">
+        <div class="spin"
+             v-if="spin">
             <icon name="spinner" pulse></icon>
         </div>
         <Planet :data="planet"></Planet>
@@ -11,6 +10,11 @@
             @click="getRandomPlanet">
             Next
         </button>
+        <div class="err"
+             v-if="err">
+            {{ err.message }}
+            <br>Try again
+        </div>
     </div>
 </template>
 
@@ -25,6 +29,7 @@ export default {
         return {
             apiUrl: "https://swapi.co/api",
             spin: false,
+            err: null,
             planetCount: 0,
             planet: {}
         }
@@ -35,23 +40,31 @@ export default {
     },
     methods: {
         async getPlanetCount(){
+            this.spin = true
+            this.err = null
             const url = `${this.apiUrl}/planets/`
-            const res = await fetch(url)
-            const data = await res.json()
-            this.planetCount = data.count
-            window.console.log("count", data.count)
+            const res = await fetch(url).catch(err => this.err = err)
+            if(res.ok){
+                const data = await res.json().catch(err => this.err = err)
+                this.planetCount = data.count
+                window.console.log("count", data.count)
+            }
+            this.spin = false
         },
         async getRandomPlanet(){
             this.spin = true
+            this.err = null
             const count = Math.floor(this.planetCount)
-            const random = Math.floor(Math.random() * count)
+            const random = Math.floor(Math.random() * count) || 1
             window.console.log("random", random)
             const url = `${this.apiUrl}/planets/${random}`
-            const res = await fetch(url)
-            const data = await res.json()
-            this.planet = data
+            const res = await fetch(url).catch(err => this.err = err)
+            if(res.ok){
+                const data = await res.json().catch(err => this.err = err)
+                this.planet = data
+                window.console.log("planet", data)
+            }
             this.spin = false
-            window.console.log("planet", data)
         }
     }
 }
@@ -64,8 +77,11 @@ h1
 .container
     text-align: center
 
-.icon
-    margin-bottom: 30px 0
+.container .spin
+    margin-bottom: 30px
+
+.container .err
+    margin-top: 30px
 
 </style>
 

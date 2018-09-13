@@ -1,20 +1,20 @@
 <template>
     <div class="card">
-        <div class="card-header" v-once>
-            {{ name }}
+        <div class="card-header">
+            {{ data.name }}
         </div>
         <div class="card-body">
             <p class="card-text">
-                Population: {{ population }}
+                <strong>Population:</strong> {{ data.population }}
             </p>
             <p class="card-text">
-                Climate: {{ climate }}
+                <strong>Climate:</strong> {{ data.climate }}
             </p>
             <p class="card-text">
-                Terrain: {{ terrain }}
+                <strong>Terrain:</strong> {{ data.terrain }}
             </p>
             <p class="card-text">
-                Featured in {{ featured }} films
+                Featured in <strong>{{ data.films ? data.films.length : 0}}</strong> films
             </p>
         </div>
     </div>
@@ -22,13 +22,9 @@
 
 <script>
 export default {
-    data: () => ({
-        name: "Planet Name",
-        population: 999,
-        climate: "Arid",
-        terrain: "Desert",
-        featured: 9
-    })
+    props: {
+        data: Object
+    }
 }
 </script>
 

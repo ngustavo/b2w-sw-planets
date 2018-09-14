@@ -47,7 +47,7 @@ export default {
             if(res.ok){
                 const data = await res.json().catch(err => this.err = err)
                 this.planetCount = data.count
-                console.log("count", data.count)
+                window.console.log("count", data.count)
             }
             this.spin = false
         },
@@ -56,13 +56,13 @@ export default {
             this.err = null
             const count = Math.floor(this.planetCount)
             const random = Math.floor(Math.random() * count) || 1
-            console.log("random", random)
+            window.console.log("random", random)
             const url = `${this.apiUrl}/planets/${random}`
             const res = await fetch(url).catch(err => this.err = err)
             if(res.ok){
                 const data = await res.json().catch(err => this.err = err)
                 this.planet = data
-                console.log("planet", data)
+                window.console.log("planet", data)
             }
             this.spin = false
         }

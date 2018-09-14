@@ -1,5 +1,6 @@
 <template>
     <div class="card">
+        <headful :title="data.name"></headful>
         <div class="card-header">
             {{ data.name }}
         </div>

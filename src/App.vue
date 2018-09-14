@@ -1,5 +1,8 @@
 <template>
-    <Main></Main>
+    <div>
+        <headful title="StarWars Planets"></headful>
+        <Main></Main>
+    </div>
 </template>
 
 <script>
